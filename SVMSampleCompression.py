@@ -9,6 +9,7 @@ XLeftBound = -200
 XRightBound = 200
 YDownBound = -200
 YUpBound = 200
+NumPoints = 900
 
 class SVMSampleCompression:
 	def __init__(self):
@@ -24,12 +25,10 @@ class SVMSampleCompression:
 
 		self.samplePoints = []
 
-		self.DrawLine(self.kMargin,self.b1Margin, lineColor = 'r')
-		self.DrawLine(self.kMargin,self.b2Margin, lineColor = 'b')
-
 	#Randomly create points restricted by support vectors
 	def CreateAndDrawRandomPoints(self):
-		NumPoints = 900
+		self.DrawLine(self.kMargin,self.b1Margin, lineColor = 'r')
+		self.DrawLine(self.kMargin,self.b2Margin, lineColor = 'b')
 
 		currNumPoints = 0
 		while currNumPoints <= NumPoints:
@@ -72,24 +71,6 @@ class SVMSampleCompression:
 			plt.plot([p1.x, p2.x], [p1.y,p2.y], lineColor)
 		else:
 			plt.plot([p1.x, p2.x], [p1.y,p2.y], 'k--')
-
-		# #Draw the hyperplane.
-		# XLeft = -999
-		# XRight = 999
-		# XLeftBound = -200
-		# XRightBound = 200
-		# YLowBound = -200
-		# YHighBound = 200
-
-		# MarginX = [XLeft, XRight]
-		# MarginY1 = [XLeft*k+b1, XRight*k+b1]
-		# MarginY2 = [XLeft*k+b2, XRight*k+b2]
-
-		# plt.plot(SupportVectorsX1,SupportVectorsY1, 'ro')
-		# plt.plot(MarginX, MarginY1, 'ro-')
-		# plt.plot(SupportVectorsX2,SupportVectorsY2, 'b*')
-		# plt.plot(MarginX, MarginY2, 'b*-')
-		# plt.axis([XLeftBound,XRightBound,YLowBound,YHighBound])
 
 	def LabelPositive(self, x,y):
 		#You want the points to be above margin plane of category 1
@@ -163,25 +144,3 @@ class SVMSampleCompression:
 				plt.plot(point.x, point.y, 'ro')
 			else:
 				plt.plot(point.x, point.y, 'b*')
-
-
-	# #Plot the compression plane of category 1, plot the compression plane of category 2
-	# plt.plot([MaxXPoint1[0], MaxYPoint1[0]], [MaxXPoint1[1], MaxYPoint1[1]], 'ro--')
-	# plt.plot([MaxXPoint2[0], MaxYPoint2[0]], [MaxXPoint2[1], MaxYPoint2[1]], 'bo--')
-
-
-	# RemainingPoints = 0
-	# RemainX1 = []
-	# RemainY1 = []
-	# RemainX2 = []
-	# RemainY2 = []
-
-
-
-	# print "Remain points / total points = "
-	# print RemainingPoints*1.0/NumPoints
-
-	# plt.plot(RemainX1, RemainY1, 'ro')
-	# plt.plot(RemainX2, RemainY2, 'b*')
-
-	# plt.show()
